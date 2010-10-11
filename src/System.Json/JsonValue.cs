@@ -153,7 +153,15 @@ namespace System.Json
                         w.Write('\"');
                         w.Write(EscapeString(pair.Key));
                         w.Write("\": ");
-                        pair.Value.SaveInternal(w);
+
+                        if (pair.Value == null)
+                        {
+                            w.Write("null");
+                        }
+                        else
+                        {
+                            pair.Value.SaveInternal(w);
+                        }
                         following = true;
                     }
                     w.Write('}');
@@ -165,7 +173,14 @@ namespace System.Json
                     {
                         if (following)
                             w.Write(", ");
-                        v.SaveInternal(w);
+                        if (v == null)
+                        {
+                            w.Write("null");
+                        }
+                        else
+                        {
+                            v.SaveInternal(w);
+                        }
                         following = true;
                     }
                     w.Write(']');

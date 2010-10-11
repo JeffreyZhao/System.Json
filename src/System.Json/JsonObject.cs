@@ -71,8 +71,6 @@ namespace System.Json
         {
             if (key == null)
                 throw new ArgumentNullException("key");
-            if (value == null)
-                throw new ArgumentNullException("value");
 
             map.Add(key, value);
         }
